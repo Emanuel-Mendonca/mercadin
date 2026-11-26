@@ -12,10 +12,10 @@
 
 <div align="center">
 
-|                              Ícone do app                               |                                       Ícone adaptativo                                       |                                   Splash                                   |                               Favicon                                |
-| :---------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------: | :------------------------------------------------------------------: |
-| <img src="../../src/ui/assets/icon.png" alt="Ícone do app" width="110"> | <img src="../../src/ui/assets/adaptive-icon.png" alt="Ícone adaptativo Android" width="110"> | <img src="../../src/ui/assets/splash.png" alt="Splash screen" width="110"> | <img src="../../src/ui/assets/favicon.png" alt="Favicon" width="60"> |
-|                           Launcher do celular                           |                                Máscara do Android, sem fundo                                 |                              Abertura do app                               |                           Aba do navegador                           |
+|                              Ícone do app                               |                                       Ícone adaptativo                                       |                               Favicon                                |
+| :---------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: | :------------------------------------------------------------------: |
+| <img src="../../src/ui/assets/icon.png" alt="Ícone do app" width="110"> | <img src="../../src/ui/assets/adaptive-icon.png" alt="Ícone adaptativo Android" width="110"> | <img src="../../src/ui/assets/favicon.png" alt="Favicon" width="60"> |
+|                           Launcher do celular                           |                                Máscara do Android, sem fundo                                 |                           Aba do navegador                           |
 
 </div>
 
@@ -94,8 +94,11 @@ usuário em **Itens → Aparência** (claro, escuro ou o do sistema) e é gravad
 2. **Ícone adaptativo Android** (`src/ui/assets/adaptive-icon.png`): apenas o símbolo, sem
    fundo (transparente), extraído da logo oficial para compor com a máscara adaptativa do
    Android.
-3. **Splash screen** (`src/ui/assets/splash.png`): mesmo símbolo, centralizado sobre fundo
-   noturno em formato retrato.
+3. **Abertura do app**: é uma tela animada (`src/ui/components/TelaAbertura.tsx`), não uma
+   imagem. A splash nativa, que o sistema impõe enquanto o bundle JavaScript carrega, ficou
+   apenas com a cor de fundo, acompanhando o esquema claro ou escuro do aparelho, para o
+   usuário não ver duas aberturas seguidas. Ver o plugin `expo-splash-screen` em
+   `app.config.ts`. A imagem de splash em formato retrato foi removida por isso.
 4. **Monocromático** (favicon, impressão em P&B): a logo já funciona nativamente em uma cor
    só (claro sobre escuro), é a sua forma padrão, sem necessidade de uma versão separada.
 5. **Wordmark**: "Mercadin" em Raleway/Space Grotesk, em lavanda,

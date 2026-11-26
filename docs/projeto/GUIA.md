@@ -68,7 +68,18 @@ restrinja a uma, corta o tempo de compilação em cerca de quatro vezes. Em
 reactNativeArchitectures=arm64-v8a
 ```
 
-Compile:
+Compile. No PowerShell, que é o terminal padrão do Windows, `&&` não existe e `./gradlew`
+aponta para o script do Unix; use o `.bat` e separe os comandos:
+
+```powershell
+cd android
+```
+
+```powershell
+.\gradlew.bat assembleRelease
+```
+
+Em bash, zsh ou Git Bash:
 
 ```bash
 cd android && ./gradlew assembleRelease

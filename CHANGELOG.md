@@ -7,6 +7,22 @@ segue [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+### Alterado (abertura do app)
+
+- A splash nativa deixa de mostrar imagem e fica só com a cor de fundo, acompanhando o
+  esquema claro ou escuro do aparelho (`#FBF8FF` e `#10131B`, os mesmos fundos da
+  `TelaAbertura`). O usuário passa a ver uma abertura só, não duas em sequência
+- Antes a splash nativa era preta e exibia `splash.png`, uma imagem retrato de 1242x2436
+  encolhida para 200px de largura, o que aparecia como um retângulo escuro no meio de uma
+  tela preta, sem relação com a tela animada que vinha logo depois
+- `src/ui/assets/splash.png` removido, não é mais usado por nada
+- A imagem configurada passou a ser um PNG 1x1 transparente, e não a ausência de imagem,
+  porque o plugin aponta `windowSplashScreenAnimatedIcon` para `@drawable/splashscreen_logo`
+  de qualquer forma: sem arquivo, o recurso não é gerado e a referência órfã quebra o build
+- Limitação conhecida: a splash nativa segue o tema do **sistema**, não a preferência
+  gravada no app. Quem forçar o tema oposto ao do aparelho vê uma troca de cor no primeiro
+  instante. A preferência mora no SQLite e só pode ser lida depois que o JavaScript sobe
+
 ### Corrigido (bug que nenhuma checagem pegava)
 
 - `INSERT OR IGNORE INTO catalogo_itens (nome, categoria) VALUES (??)`, em três lugares.

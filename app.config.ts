@@ -46,9 +46,28 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-splash-screen',
       {
-        backgroundColor: '#000000',
-        image: './src/ui/assets/splash.png',
-        imageWidth: 200
+        // A splash nativa existe por imposição do sistema: Android e iOS
+        // mostram alguma tela enquanto o bundle JavaScript carrega, e não há
+        // como suprimi-la. O que dá para fazer é torná-la invisível, deixando
+        // só o fundo, igual ao da TelaAbertura, que assume em seguida. O
+        // usuário percebe uma tela de abertura só, não duas.
+        //
+        // A imagem é um PNG 1x1 transparente, e não a ausência de imagem,
+        // porque o plugin aponta `windowSplashScreenAnimatedIcon` para
+        // `@drawable/splashscreen_logo` de qualquer jeito: sem arquivo, o
+        // recurso não é gerado e a referência órfã quebra o build.
+        //
+        // As cores acompanham o esquema do sistema, que é o padrão da
+        // preferência de tema do app. Quem forçar o tema oposto ao do
+        // aparelho vai ver uma troca de cor no primeiro instante, não há como
+        // evitar: a preferência mora no SQLite e só é lida depois do JS subir.
+        backgroundColor: '#FBF8FF',
+        image: './src/ui/assets/splash-vazio.png',
+        imageWidth: 1,
+        dark: {
+          backgroundColor: '#10131B',
+          image: './src/ui/assets/splash-vazio.png'
+        }
       }
     ]
   ],
