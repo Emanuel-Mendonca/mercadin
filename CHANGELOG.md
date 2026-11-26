@@ -7,6 +7,81 @@ segue [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+### Corrigido (bug que nenhuma checagem pegava)
+
+- `INSERT OR IGNORE INTO catalogo_itens (nome, categoria) VALUES (??)`, em três lugares.
+  Faltava a vírgula entre os dois marcadores, o que quebrava o cadastro de item no
+  catálogo e a semente de um banco novo. Veio do passe de ortografia que removeu
+  travessões: o padrão que tirava vírgula antes de pontuação também comeu a de
+  `VALUES (?, ?)`. Lint, typecheck e testes passavam, porque SQL é string
+
+### Adicionado (fase 1 da sincronização: identidade dos registros)
+
+- Schema v2: chave primária em **UUID v7** gerado no aparelho, no lugar de
+  `INTEGER PRIMARY KEY AUTOINCREMENT`. Dois aparelhos offline criavam `id = 1` para
+  compras diferentes, o que inviabilizava qualquer sincronização
+- Colunas `atualizado_em` e `excluido_em` em toda tabela sincronizável. A exclusão passa a
+  ser lógica (tombstone): uma linha que some sem rastro é indistinguível de uma que o
+  outro aparelho ainda não conhece, e voltaria no sync seguinte
+- Unicidade de nome virou **índice parcial** (`WHERE excluido_em IS NULL`). Com `UNIQUE` na
+  coluna, um registro excluído continuaria ocupando o nome para sempre
+- `migracaoSync.ts`: conversão do v1 para o v2 preservando os dados. Lê tudo para a
+  memória antes de derrubar qualquer tabela, e roda em transação, então falha inteira ou
+  não falha. O carimbo de sincronização de cada compra vem do histórico real
+  (`updated_at ?? created_at`), não do momento da migração
+- `uuid.ts`: gerador de UUID v7 escrito como função pura, testável sem módulo nativo.
+  Dependência nova: `expo-crypto`, para a entropia do sistema
+- **Testes dos repositórios SQLite**, usando o `node:sqlite` embutido no Node como
+  implementação do `expo-sqlite`. O SQL executa de verdade, com a mesma gramática do
+  aparelho, então erro de sintaxe e violação de chave estrangeira quebram o teste. 27
+  casos novos, incluindo a migração e o seu rollback
+
+### Alterado
+
+- A compra passa a ser a **unidade de sincronização**, com os itens fazendo parte dela. O
+  formulário substitui a lista inteira ao editar, então fusão item a item prometeria um
+  resultado que a interface nunca produz. `PLATAFORMA.md` foi corrigido, ele previa o
+  contrário
+- Identificadores de domínio passaram de `number` para `string` em toda a camada de dados,
+  na store e nas telas
+- Removidos imports mortos de `useRef` em quatro componentes, sobra da troca por `useState`
+
+### Adicionado (plataforma web, backend e sincronização)
+
+- `docs/projeto/PLATAFORMA.md`: decisões de arquitetura para a fase online. Backend em
+  ASP.NET Core com PostgreSQL, aplicação web em React com leitura e edição completas,
+  sincronização por HTTP com cursor do servidor e SignalR restrito ao aviso de mudança
+- ROADMAP: novo marco "V3, plataforma web e sincronização", com a migração de
+  identificadores como pré-requisito bloqueante
+- ROADMAP: "Autenticação e contas de usuário" e "Sincronização em nuvem com backend
+  próprio" saíram de "Fora de escopo". A reversão ficou registrada com o motivo original e
+  o motivo da mudança, em vez de as linhas serem apagadas
+
+### Alterado (landing page reorganizada)
+
+- Hero em duas colunas, métricas do projeto, seção de instalação, banner da plataforma web
+  e rodapé em grade. CSS continua escrito à mão em `docs/assets/css/landing.css`, sem
+  framework por CDN
+- A seção de instalação diz que **não existe release publicada**, porque não existe: o
+  repositório não tem nenhuma tag. O caminho atual é compilar pelo GUIA
+- Registrada a ressalva de que o pacote local tem cerca de 58 MB, roda em arm64 e é
+  assinado com a chave de depuração, não é pacote de distribuição
+- Funcionalidades passam a incluir a leitura de cupom fiscal por QR Code, com a limitação
+  a Minas Gerais dita na própria descrição
+- Título do hero deixa de ser "organizadas em órbita": a figura vinha do nome anterior
+
+### Alterado (renomeação do projeto)
+
+- O app passa a se chamar **Mercadin**. Nome, slug, scheme, identificador
+  (`com.vortexcart.app` para `com.mercadin.app`), textos de interface, documentação e
+  landing page foram atualizados
+- As entradas antigas deste arquivo mantêm o nome "Vortex Cart": são registro do que
+  aconteceu na época e reescrevê-las falsificaria o histórico
+- A troca do identificador faz o Android tratar a nova versão como outro app: a
+  atualização não preserva os dados, e é preciso exportar o backup JSON antes de instalar
+  e importá-lo em seguida
+- O símbolo (anel aberto com carrinho) foi mantido sem alteração
+
 ### Removido (limpeza de arquivos e pastas sem uso)
 
 - `app/index.tsx` e `app/layout.tsx`: arquivos vazios (0 bytes) que o Expo Router registrava
@@ -125,5 +200,5 @@ segue [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 - Importação de backup JSON (aditiva, não destrutiva)
 - Guia de implementação e publicação no GitHub (`IMPLEMENTACAO.md`)
 
-[Não lançado]: https://github.com/Emanuel-Mendonca/vortexcart/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Emanuel-Mendonca/vortexcart/releases/tag/v0.1.0
+[Não lançado]: https://github.com/Emanuel-Mendonca/mercadin/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Emanuel-Mendonca/mercadin/releases/tag/v0.1.0

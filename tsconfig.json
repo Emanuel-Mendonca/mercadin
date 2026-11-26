@@ -8,7 +8,9 @@
     "forceConsistentCasingInFileNames": true,
     // O TypeScript 6 deixou de incluir @types/* automaticamente neste setup,
     // então os globais do Jest (describe/it/expect) precisam ser declarados.
-    "types": ["jest"],
+    // "node" entra por causa de src/data/storage/testing/, que usa o SQLite
+    // embutido no Node para rodar o SQL dos repositórios nos testes.
+    "types": ["jest", "node"],
     "paths": {
       "@/*": ["./src/*"],
       "@/components": ["./src/ui/components"],

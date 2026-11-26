@@ -3,22 +3,25 @@
  * -----------------------------------------------------------------------
  * Modelo normalizado (mercados / compras / itens_compra / catalogo_itens),
  * pensado para consultas SQL de agregação (SUM, AVG, GROUP BY) usadas nas
- * telas de Resumo e Histórico. Difere do modelo "um JSON só" da versão web
- * porque agora há um banco relacional de verdade por trás.
+ * telas de Resumo e Histórico.
+ *
+ * Os identificadores são `string`, não `number`: são UUID v7 gerados no
+ * aparelho, porque `AUTOINCREMENT` faz dois celulares offline criarem o
+ * mesmo id para compras diferentes. Ver docs/projeto/PLATAFORMA.md.
  */
 
 export interface Mercado {
-  id: number;
+  id: string;
   nome: string;
 }
 
 export interface MetodoPagamento {
-  id: number;
+  id: string;
   nome: string;
 }
 
 export interface CatalogoItem {
-  id: number;
+  id: string;
   nome: string;
   categoria: string;
 }
@@ -30,8 +33,8 @@ export interface PrecoMedioItem {
 }
 
 export interface ItemCompra {
-  id: number;
-  compraId: number;
+  id: string;
+  compraId: string;
   nome: string;
   quantidade: number;
   valorUnitario: number;
@@ -42,12 +45,12 @@ export interface ItemCompra {
 export type NovoItemCompra = Omit<ItemCompra, 'id' | 'compraId'>;
 
 export interface Compra {
-  id: number;
+  id: string;
   mes: string; // formato "YYYY-MM"
-  mercadoId: number;
+  mercadoId: string;
   total: number;
   /** Nulo em compras registradas antes de existir forma de pagamento. */
-  metodoPagamentoId: number | null;
+  metodoPagamentoId: string | null;
   createdAt: number;
   updatedAt: number | null;
 }
@@ -80,7 +83,7 @@ export interface GastoPorMetodoPagamento {
 }
 
 export interface ComparativoMercado {
-  mercadoId: number;
+  mercadoId: string;
   mercadoNome: string;
   totalGasto: number;
   quantidadeCompras: number;

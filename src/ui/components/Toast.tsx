@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, StyleSheet, Text } from 'react-native';
 
 import { useTema } from '@/theme';

@@ -48,7 +48,7 @@ interface ComprasState {
   gastoPorMes: GastoPorMes[];
   gastoPorMetodo: GastoPorMetodoPagamento[];
   comparativoMercados: ComparativoMercado[];
-  editingId: number | null;
+  editingId: string | null;
   /**
    * Compra lida de um cupom fiscal, aguardando revisão na tela de Nova
    * Compra. Fica na store (e não em parâmetro de rota) porque a lista de
@@ -63,8 +63,8 @@ interface ComprasState {
   init: () => Promise<void>;
   refreshTudo: () => Promise<void>;
   salvarCompra: (input: NovaCompraInput) => Promise<void>;
-  excluirCompra: (id: number) => Promise<void>;
-  iniciarEdicao: (id: number) => void;
+  excluirCompra: (id: string) => Promise<void>;
+  iniciarEdicao: (id: string) => void;
   definirRascunhoCupom: (rascunho: RascunhoCupom | null) => void;
   definirPreferenciaTema: (preferencia: PreferenciaTema) => Promise<void>;
   cancelarEdicao: () => void;
@@ -74,10 +74,10 @@ interface ComprasState {
   adicionarItemCatalogo: (nome: string, categoria?: string) => Promise<boolean>;
   /** Resolve para `false` quando já existia uma forma de pagamento com esse nome. */
   adicionarMetodoPagamento: (nome: string) => Promise<boolean>;
-  renomearMetodoPagamento: (id: number, novoNome: string) => Promise<void>;
-  removerMetodoPagamento: (id: number) => Promise<void>;
-  renomearItemCatalogo: (id: number, novoNome: string, categoria?: string) => Promise<void>;
-  removerItemCatalogo: (id: number) => Promise<void>;
+  renomearMetodoPagamento: (id: string, novoNome: string) => Promise<void>;
+  removerMetodoPagamento: (id: string) => Promise<void>;
+  renomearItemCatalogo: (id: string, novoNome: string, categoria?: string) => Promise<void>;
+  removerItemCatalogo: (id: string) => Promise<void>;
 }
 
 /** Protege contra valor inválido vindo do banco (edição manual, versão antiga). */
@@ -182,12 +182,12 @@ export const useComprasStore = create<ComprasState>((set, get) => ({
     await get().refreshTudo();
   },
 
-  excluirCompra: async (id: number) => {
+  excluirCompra: async (id: string) => {
     await excluirCompraDb(id);
     await get().refreshTudo();
   },
 
-  iniciarEdicao: (id: number) => set({ editingId: id }),
+  iniciarEdicao: (id: string) => set({ editingId: id }),
   definirRascunhoCupom: (rascunho: RascunhoCupom | null) => set({ rascunhoCupom: rascunho }),
 
   definirPreferenciaTema: async (preferencia: PreferenciaTema) => {
@@ -212,7 +212,7 @@ export const useComprasStore = create<ComprasState>((set, get) => ({
     await get().refreshTudo();
     return inserido;
   },
-  renomearItemCatalogo: async (id: number, novoNome: string, categoria?: string) => {
+  renomearItemCatalogo: async (id: string, novoNome: string, categoria?: string) => {
     await renameCatalogoItem(id, novoNome, categoria);
     await get().refreshTudo();
   },
@@ -221,16 +221,16 @@ export const useComprasStore = create<ComprasState>((set, get) => ({
     await get().refreshTudo();
     return inserido;
   },
-  renomearMetodoPagamento: async (id: number, novoNome: string) => {
+  renomearMetodoPagamento: async (id: string, novoNome: string) => {
     await renameMetodoPagamento(id, novoNome);
     await get().refreshTudo();
   },
-  removerMetodoPagamento: async (id: number) => {
+  removerMetodoPagamento: async (id: string) => {
     await removeMetodoPagamento(id);
     await get().refreshTudo();
   },
 
-  removerItemCatalogo: async (id: number) => {
+  removerItemCatalogo: async (id: string) => {
     await removeCatalogoItem(id);
     await get().refreshTudo();
   }

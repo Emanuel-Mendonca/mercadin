@@ -7,6 +7,7 @@ export async function getGastoPorMes(): Promise<GastoPorMes[]> {
   return db.getAllAsync<GastoPorMes>(
     `SELECT mes, SUM(total) as total
      FROM compras
+     WHERE excluido_em IS NULL
      GROUP BY mes
      ORDER BY mes ASC`
   );
@@ -34,6 +35,7 @@ export async function getGastoPorMetodoPagamento(): Promise<GastoPorMetodoPagame
             COUNT(c.id) as quantidade_compras
        FROM compras c
        LEFT JOIN metodos_pagamento mp ON mp.id = c.metodo_pagamento_id
+      WHERE c.excluido_em IS NULL
       GROUP BY c.metodo_pagamento_id, mp.nome
       ORDER BY total_gasto DESC`
   );
@@ -45,7 +47,7 @@ export async function getGastoPorMetodoPagamento(): Promise<GastoPorMetodoPagame
 }
 
 interface ComparativoRow {
-  mercado_id: number;
+  mercado_id: string;
   mercado_nome: string;
   total_gasto: number;
   quantidade_compras: number;
@@ -59,6 +61,7 @@ export async function getComparativoMercados(): Promise<ComparativoMercado[]> {
             COUNT(*) as quantidade_compras
      FROM compras c
      JOIN mercados m ON m.id = c.mercado_id
+     WHERE c.excluido_em IS NULL
      GROUP BY m.id`
   );
 

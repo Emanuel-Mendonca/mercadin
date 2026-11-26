@@ -37,7 +37,7 @@ export function HistoricoScreen() {
   const iniciarEdicao = useComprasStore((s) => s.iniciarEdicao);
   const excluirCompra = useComprasStore((s) => s.excluirCompra);
 
-  const [confirmarExclusaoId, setConfirmarExclusaoId] = useState<number | null>(null);
+  const [confirmarExclusaoId, setConfirmarExclusaoId] = useState<string | null>(null);
   const [busca, setBusca] = useState('');
   const [filtrosAbertos, setFiltrosAbertos] = useState(false);
 
