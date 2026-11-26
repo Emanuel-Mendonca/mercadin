@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/screenshots/vortex-icon.png" alt="Vortex Cart" width="96">
+<img src="docs/screenshots/mercadin-icon.png" alt="Mercadin" width="96">
 
-# Vortex Cart
+# Mercadin
 
 **Registre suas compras de mercado item por item e descubra em qual supermercado o seu dinheiro rende mais.**
 
@@ -90,8 +90,8 @@ O raciocínio por trás de cada escolha está em
 ## Começando
 
 ```bash
-git clone https://github.com/Emanuel-Mendonca/vortexcart.git
-cd vortexcart
+git clone https://github.com/Emanuel-Mendonca/mercadin.git
+cd mercadin
 npm install
 ```
 

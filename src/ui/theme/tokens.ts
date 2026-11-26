@@ -3,7 +3,7 @@
  * -----------------------------------------------------------------------
  * Fonte única de verdade para cores, tipografia, espaçamento e raios.
  *
- * Paleta "Vortex", atmosférica, cósmica, glassmorphism. Extraída de um
+ * Paleta atmosférica, cósmica, glassmorphism. Extraída de um
  * esquema Material Design 3 (tons "primary/secondary/tertiary/surface"
  * completos, fornecidos para o tema escuro). O tema claro foi derivado
  * usando os próprios tokens "inverse-*" e "*-fixed*" do M3, que existem

@@ -27,7 +27,7 @@ interface MercadoExemplo {
 }
 
 const VENCEDOR: MercadoExemplo = {
-  nome: 'Atacadão Vortex',
+  nome: 'Atacadão Bom Preço',
   mediaPorCompra: 169.22,
   compras: 6,
   totalGasto: 1015.32

@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, Easing, Image, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Defs, RadialGradient, Stop } from 'react-native-svg';
 
@@ -188,7 +188,7 @@ export function TelaAbertura({ etapa, versao }: TelaAberturaProps) {
             { fontFamily: theme.fontFamily.extraBold, color: theme.colors.text }
           ]}
         >
-          VORTEX CART
+          MERCADIN
         </Text>
 
         <LinearGradient

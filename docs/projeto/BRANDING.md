@@ -1,8 +1,8 @@
-# Identidade de Marca, Vortex Cart
+# Identidade de Marca, Mercadin
 
 <div align="center">
 
-<img src="../screenshots/vortex-icon.png" alt="Logo do Vortex Cart" width="160">
+<img src="../screenshots/vortex-icon.png" alt="Logo do Mercadin" width="160">
 
 **A logo oficial: anel orbital aberto envolvendo um carrinho de compras.**
 
@@ -21,57 +21,71 @@
 
 ## Nome
 
-**Vortex Cart**
+**Mercadin**
 
-- **Vortex** (vórtice): remete a atração, movimento circular, algo "puxando" pra dentro,
-  aqui, a ideia de que suas compras espalhadas em vários mercados são puxadas para um único
-  lugar organizado, e que o app "suga" o desperdício do seu orçamento.
-- **Cart** (carrinho): imediatamente reconhecível como compras/mercado, em inglês, mantém o
-  nome curto, internacional e fácil de pronunciar, sem perder clareza do propósito do app.
-- Pronúncia simples em português e inglês, funciona bem como wordmark curto para ícone de
-  app (cabe em poucos caracteres em qualquer launcher).
+- **Vem de Minas.** Em Minas Gerais, "mercadin" é como se chama, com carinho, o comércio
+  perto de casa: o mercado da esquina, o do bairro, aquele em que o dono conhece o cliente
+  pelo nome. O diminutivo ali não fala de tamanho, fala de proximidade e de afeto. Foi esse
+  apelido do dia a dia que batizou o app.
+- **Coloca o app no lugar certo.** "Vou ali no mercadin" é exatamente a situação de uso:
+  celular na mão, no corredor, registrando a compra enquanto ela acontece. O nome não
+  descreve um software, descreve o momento em que o software serve para alguma coisa.
+- **Honesto sobre o alcance.** A leitura de cupom fiscal funciona com a SEFAZ de Minas
+  Gerais, e só com ela, porque o app nasceu em Minas e foi feito primeiro para quem compra
+  aqui. Cada estado publica a nota eletrônica em um portal próprio, com endereço e layout
+  próprios, então suporte a outros estados é trabalho novo, não configuração. Um nome
+  mineiro diz isso antes da primeira tela. Os valores são em real e as datas no formato
+  brasileiro pelo mesmo motivo.
+
+> **Nota de transição.** O projeto se chamou **Vortex Cart** até outubro de 2026. O nome
+> anterior pode aparecer em entradas antigas do [CHANGELOG](../../CHANGELOG.md), que são
+> registro histórico e não devem ser reescritas.
 
 ## Conceito do símbolo
 
-Um anel orbital com uma abertura (não é um círculo fechado) envolvendo um ícone de carrinho
-de compras minimalista, esta é a **logo oficial adotada** para o app (não mais um
-placeholder gerado por código).
+Um anel aberto (não é um círculo fechado) envolvendo um carrinho de compras minimalista.
 
-- **O anel aberto** sugere órbita e movimento, o "vórtice" não é um objeto estático, é uma
-  trajetória em andamento, sempre girando.
-- **A abertura no anel** funciona como um portal/entrada, por onde as compras "entram" na
-  órbita do app.
 - **O carrinho no centro** é literal e direto: não deixa dúvida sobre do que o app trata,
   mesmo à distância ou em tamanho pequeno (favicon, ícone de launcher).
-- A paleta clara (quase branca) sobre fundo noturno faz o símbolo funcionar como um "recibo
-  luminoso", a ideia de algo que se destaca no escuro, como uma constelação.
+- **O anel** emoldura e dá foco, funcionando como a borda de uma etiqueta ou de um selo.
+- **A abertura no anel** evita o peso de um círculo fechado e deixa a forma mais leve.
+- A paleta clara sobre fundo noturno faz o símbolo se destacar no escuro.
+
+> **O símbolo foi desenhado para o nome anterior.** O anel representava o "vórtice" que
+> dava nome ao app, e essa leitura não se aplica mais a "Mercadin". A forma continua
+> funcionando como moldura do carrinho, mas se um dia a identidade for revista, o anel é o
+> primeiro elemento a questionar: hoje ele é decoração, não significado.
 
 ## Direção visual: atmosférica / cósmica / glassmorphism
 
 A identidade evoluiu de um estilo flat/bold (blocos sólidos, bordas pretas grossas) para uma
 linguagem **atmosférica**: superfícies translúcidas com desfoque (glassmorphism), glows
 coloridos suaves ao fundo, anéis orbitais finos, e sombras com cor (em vez de sombra dura
-preta). A ideia de "vórtice" ficou mais literal nessa direção, o círculo de anéis girando ao
-redor do mockup do app na landing page é a representação direta do próprio símbolo da marca.
+preta). Os anéis girando ao redor do mockup na landing page e na tela de abertura são a extensão
+animada do próprio símbolo.
 
 ## Cores
 
-Paleta derivada de um esquema Material Design 3 (tema escuro completo), com o tema claro
-obtido a partir dos tokens `inverse-*`/`*-fixed*` do próprio M3, não são cores soltas
-inventadas à parte, e estão centralizadas em `src/ui/theme/tokens.ts`.
+Os dois temas estão centralizados em `src/ui/theme/tokens.ts`. O escuro vem de um esquema
+Material Design 3 completo. O claro é a paleta "Kinetic Violet Modernist": superfícies frias
+e quase brancas com tinta violeta-carvão, pontuadas por violeta elétrico.
 
-| Token                    | Uso                                 | Escuro (padrão)                          | Claro                                |
-| ------------------------ | ----------------------------------- | ---------------------------------------- | ------------------------------------ |
-| `primary`                | Vórtice, botões primários, glow     | Lavanda `#CCBFF7`                        | Roxo profundo `#625788`              |
-| `accent`                 | Selos, destaques ("mais econômico") | Dourado `#D3C87C` (igual nos dois temas) | Dourado `#D3C87C`                    |
-| `background`             | Fundo geral                         | Noturno `#10131B`                        | Branco `#FFFFFF`                     |
-| `surface` / `surfaceAlt` | Cards, superfícies elevadas         | `#1D1F28` / `#272A32`                    | Branco / lavanda bem clara `#F3F0FA` |
-| `text`                   | Texto principal                     | `#E1E2EE`                                | Roxo quase-preto `#1E1341`           |
-| `border`                 | Bordas e contornos                  | `#938F99`                                | `#7A7290`                            |
+| Token                    | Uso                                 | Escuro (padrão)       | Claro                       |
+| ------------------------ | ----------------------------------- | --------------------- | --------------------------- |
+| `primary`                | Botões primários, ênfase, glow      | Lavanda `#CCBFF7`     | Violeta elétrico `#4934C2`  |
+| `accent`                 | Selos, destaques ("mais econômico") | Dourado `#D3C87C`     | Menta de precisão `#005A48` |
+| `background`             | Fundo geral                         | Noturno `#10131B`     | Canvas `#FBF8FF`            |
+| `surface` / `surfaceAlt` | Cards, superfícies elevadas         | `#1D1F28` / `#272A32` | `#FFFFFF` / `#F4F2FF`       |
+| `text`                   | Texto principal                     | `#E1E2EE`             | Violeta-carvão `#191B28`    |
+| `border`                 | Bordas e contornos                  | `#938F99`             | `#C8C4D7`                   |
 
-O tema escuro é o principal, é nele que o glow do vórtice, os anéis orbitais e o
-glassmorphism aparecem com mais força. O tema claro existe para acessibilidade/preferência do
-sistema, mas a "assinatura" visual da marca vive no escuro.
+O dourado do tema escuro não sobrevive sobre fundo claro, o contraste é insuficiente, então
+no claro o papel de destaque passa para a menta.
+
+O tema escuro continua sendo a "assinatura" visual da marca, é nele que o glow, os anéis
+orbitais e o glassmorphism aparecem com mais força. O claro não é um rebaixamento do escuro:
+é uma paleta desenhada à parte, para leitura em ambiente iluminado. A escolha fica com o
+usuário em **Itens → Aparência** (claro, escuro ou o do sistema) e é gravada no banco local.
 
 ## Variações
 
@@ -84,7 +98,7 @@ sistema, mas a "assinatura" visual da marca vive no escuro.
    noturno em formato retrato.
 4. **Monocromático** (favicon, impressão em P&B): a logo já funciona nativamente em uma cor
    só (claro sobre escuro), é a sua forma padrão, sem necessidade de uma versão separada.
-5. **Wordmark**: "Vortex Cart" em Raleway/Space Grotesk, com "Cart" destacado em lavanda,
+5. **Wordmark**: "Mercadin" em Raleway/Space Grotesk, em lavanda,
    sobre fundo escuro translúcido (ver cabeçalho de `docs/index.html`).
 
 Os arquivos em `src/ui/assets/` foram gerados automaticamente a partir da logo oficial

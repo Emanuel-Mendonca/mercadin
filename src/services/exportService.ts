@@ -170,7 +170,7 @@ function buildPdfHtml(compras: CompraComItens[]): string {
         </style>
       </head>
       <body>
-        <h1>Vortex Cart, Relatório de Compras</h1>
+        <h1>Mercadin, Relatório de Compras</h1>
         <div class="subtitulo">Gerado em ${new Date().toLocaleString('pt-BR')}</div>
         ${blocosMes}
         <div class="total-geral">Total geral: ${formatBRL(totalGeral)}</div>

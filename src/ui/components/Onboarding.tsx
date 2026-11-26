@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, Easing, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 
@@ -44,7 +44,7 @@ interface Passo {
 const PASSOS: readonly Passo[] = [
   {
     selo: { icone: 'phone-portrait-outline', texto: 'Tudo no seu aparelho' },
-    titulo: 'Boas-vindas ao Vortex Cart',
+    titulo: 'Boas-vindas ao Mercadin',
     texto:
       'Registre o que você compra no mercado e descubra onde seu dinheiro rende mais, mês a mês.',
     iconeCentral: 'cart',
@@ -264,7 +264,7 @@ export function Onboarding({ visible, onConcluir }: OnboardingProps) {
                   }
                 ]}
               />
-              <Text style={[styles.textoMarca, { color: theme.colors.primary }]}>VORTEX</Text>
+              <Text style={[styles.textoMarca, { color: theme.colors.primary }]}>MERCADIN</Text>
             </View>
           ) : (
             <Pressable
@@ -484,7 +484,7 @@ export function Onboarding({ visible, onConcluir }: OnboardingProps) {
                 color: theme.colors.onPrimary
               }}
             >
-              {ultimo ? 'Começar a usar o Vortex Cart' : 'Continuar'}
+              {ultimo ? 'Começar a usar o Mercadin' : 'Continuar'}
             </Text>
             <Ionicons name="arrow-forward" size={17} color={theme.colors.onPrimary} />
           </Pressable>

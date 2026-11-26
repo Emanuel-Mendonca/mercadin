@@ -2,9 +2,9 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'Vortex Cart',
-  slug: 'vortex-cart',
-  scheme: 'vortexcart',
+  name: 'Mercadin',
+  slug: 'mercadin',
+  scheme: 'mercadin',
   owner: undefined,
   version: '0.1.0',
   orientation: 'portrait',
@@ -15,14 +15,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.vortexcart.app'
+    bundleIdentifier: 'com.mercadin.app'
   },
   android: {
     adaptiveIcon: {
       foregroundImage: './src/ui/assets/adaptive-icon.png',
       backgroundColor: '#000000'
     },
-    package: 'com.vortexcart.app'
+    package: 'com.mercadin.app'
   },
   web: {
     favicon: './src/ui/assets/favicon.png',
@@ -37,7 +37,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-camera',
       {
         cameraPermission:
-          'O Vortex Cart usa a câmera para ler o QR Code do cupom fiscal e preencher a compra automaticamente.'
+          'O Mercadin usa a câmera para ler o QR Code do cupom fiscal e preencher a compra automaticamente.'
       }
     ],
     'expo-sharing',

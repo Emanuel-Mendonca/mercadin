@@ -18,8 +18,8 @@ com versões mais novas que a 17.
 ## Instalar e rodar
 
 ```bash
-git clone https://github.com/Emanuel-Mendonca/vortexcart.git
-cd vortexcart
+git clone https://github.com/Emanuel-Mendonca/mercadin.git
+cd mercadin
 npm install
 ```
 
@@ -113,7 +113,7 @@ cada push na `main` que toque nela.
 
 Para habilitar na primeira vez: **Settings → Pages → Source: GitHub Actions**.
 
-A página fica em `https://<usuario>.github.io/vortexcart/`.
+A página fica em `https://<usuario>.github.io/mercadin/`.
 
 ## Publicar uma versão
 

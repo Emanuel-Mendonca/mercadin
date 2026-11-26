@@ -58,7 +58,7 @@ export async function selecionarEImportarBackup(): Promise<ResultadoImportacao> 
   const parse = exportPayloadSchema.safeParse(json);
   if (!parse.success) {
     throw new ImportInvalidoError(
-      'a estrutura do arquivo não corresponde a um backup do Vortex Cart.'
+      'a estrutura do arquivo não corresponde a um backup do Mercadin.'
     );
   }
 
