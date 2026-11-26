@@ -146,11 +146,33 @@ Antes de criar a tag, atualize a seção `[Não lançado]` do
 
 ## Solução de problemas
 
-| Sintoma                                | Causa provável                                             |
-| -------------------------------------- | ---------------------------------------------------------- |
-| `npm install` falha em peer dependency | falta o `.npmrc` com `legacy-peer-deps=true`               |
-| Gradle acusa versão de Java            | `JAVA_HOME` não aponta para o JDK 17                       |
-| Erro de sintaxe de caminho no Gradle   | `local.properties` escrito com `\` em vez de `/`           |
-| Expo Go recusa abrir o projeto         | versão do Expo Go incompatível com o SDK 57                |
-| `adb` não enxerga o aparelho           | depuração USB desligada, ou cabo só de carga               |
-| Build local demora demais              | compilando as quatro arquiteturas; restrinja a `arm64-v8a` |
+| Sintoma                                                                 | Causa provável                                             |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `npm install` falha em peer dependency                                  | falta o `.npmrc` com `legacy-peer-deps=true`               |
+| Gradle acusa versão de Java                                             | `JAVA_HOME` não aponta para o JDK 17                       |
+| Erro de sintaxe de caminho no Gradle                                    | `local.properties` escrito com `\` em vez de `/`           |
+| Expo Go recusa abrir o projeto                                          | versão do Expo Go incompatível com o SDK 57                |
+| `adb` não enxerga o aparelho                                            | depuração USB desligada, ou cabo só de carga               |
+| Build local demora demais                                               | compilando as quatro arquiteturas; restrinja a `arm64-v8a` |
+| `ninja: error: libworklets.so ... missing and no known rule to make it` | cache nativo obsoleto depois de um `prebuild`, ver abaixo  |
+
+### `libworklets.so` ausente depois de um prebuild
+
+O `reanimated` é compilado contra o `worklets`, e cada um guarda o resultado em uma pasta
+nomeada por um hash da configuração do CMake. Rodar `prebuild` muda essa configuração, o
+hash do `worklets` muda junto, mas o cache do `reanimated` continua apontando para o
+caminho antigo, que não existe mais. O build morre procurando um arquivo em uma pasta com
+hash que não está no disco.
+
+A saída é apagar o cache nativo dos dois pacotes e deixar que sejam reconfigurados juntos:
+
+```powershell
+Remove-Item -Recurse -Force `
+  node_modules/react-native-worklets/android/.cxx, `
+  node_modules/react-native-worklets/android/build, `
+  node_modules/react-native-reanimated/android/.cxx, `
+  node_modules/react-native-reanimated/android/build
+```
+
+São cerca de 1,5 GB, e o build seguinte recompila o C++ do zero, o que demora. Não há como
+reaproveitar: é justamente o material inconsistente que precisa sair.
