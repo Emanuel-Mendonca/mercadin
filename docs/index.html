@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vortex Cart - suas compras de mercado, organizadas</title>
+    <title>Mercadin - suas compras de mercado, organizadas</title>
     <meta
       name="description"
-      content="Vortex Cart: registre suas compras de mercado e descubra em qual supermercado seu dinheiro rende mais. Funciona offline e online."
+      content="Mercadin: registre suas compras de mercado e descubra em qual supermercado seu dinheiro rende mais. Funciona offline, no celular."
     />
-    <link rel="icon" href="screenshots/vortex-icon.png" />
+    <link rel="icon" href="screenshots/mercadin-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -29,33 +29,55 @@
     <header>
       <div class="wrap">
         <div class="brand">
-          <img src="screenshots/vortex-icon.png" alt="Vortex Cart" />
-          <span>Vortex <b>Cart</b></span>
+          <img src="screenshots/mercadin-icon.png" alt="Mercadin" />
+          <span>Mercadin</span>
         </div>
         <nav>
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#telas">Telas</a>
-          <a href="https://github.com/Emanuel-Mendonca/vortexcart">GitHub</a>
+          <a href="#plataforma">Plataforma web</a>
+          <a href="https://github.com/Emanuel-Mendonca/mercadin">GitHub</a>
         </nav>
       </div>
     </header>
 
     <section class="hero">
-      <div class="wrap">
-        <div class="badge"><span class="dot"></span> VORTEX CART</div>
-        <h1>Suas compras de mercado, <span>organizadas em órbita</span>.</h1>
-        <p>
-          Registre o que você compra, em qual supermercado, e descubra onde seu dinheiro rende mais,
-          mês a mês, funcionando offline e online.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/Emanuel-Mendonca/vortexcart/releases">
-            <span class="material-symbols-outlined icon-inline">android</span> Android
-          </a>
-          <a class="btn btn-primary" href="https://github.com/Emanuel-Mendonca/vortexcart/releases">
-            <span class="material-symbols-outlined icon-inline">phone_iphone</span> iOS
-          </a>
-          <a class="btn btn-secondary" href="#download">Acessar plataforma web</a>
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <div class="badge"><span class="dot"></span> Versão 0.1.0, em desenvolvimento</div>
+          <h1>Suas compras de mercado, <span>registradas e comparadas</span>.</h1>
+          <p>
+            Registre o que você compra, em qual supermercado, e descubra onde seu dinheiro rende
+            mais, mês a mês. Funciona no corredor do mercado, sem sinal de internet.
+          </p>
+
+          <div class="metrics">
+            <div class="metric">
+              <strong>Offline</strong>
+              <span>sem depender de rede</span>
+            </div>
+            <div class="metric">
+              <strong>0</strong>
+              <span>anúncios e rastreadores</span>
+            </div>
+            <div class="metric">
+              <strong>15</strong>
+              <span>departamentos no catálogo</span>
+            </div>
+            <div class="metric">
+              <strong>MIT</strong>
+              <span>código aberto</span>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#instalar">
+              <span class="material-symbols-outlined icon-inline">android</span> Como instalar
+            </a>
+            <a class="btn btn-secondary" href="https://github.com/Emanuel-Mendonca/mercadin">
+              <span class="material-symbols-outlined icon-inline">code</span> Ver o código
+            </a>
+          </div>
         </div>
 
         <div class="orbit-frame">
@@ -86,9 +108,66 @@
             />
           </svg>
           <div class="device">
-            <img src="screenshots/1_nova_compra.png" alt="Tela Nova Compra do Vortex Cart" />
+            <img src="screenshots/1_nova_compra.png" alt="Tela Nova Compra do Mercadin" />
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="instalar">
+      <div class="wrap">
+        <div class="eyebrow">
+          <span class="material-symbols-outlined">download</span> Instalação
+        </div>
+        <h2>Ainda não há uma versão publicada</h2>
+        <p class="subtitle">
+          O Mercadin é usado hoje pelo próprio autor, compilado na mão. Quando houver uma release,
+          ela aparece aqui.
+        </p>
+
+        <div class="install-grid">
+          <div class="install-card">
+            <div class="install-head">
+              <span class="material-symbols-outlined">terminal</span>
+              <h3>Compilar você mesmo</h3>
+            </div>
+            <p>
+              O caminho que funciona hoje. Exige Node, JDK 17 e o SDK do Android. O guia tem o passo
+              a passo completo, incluindo como restringir a compilação a uma arquitetura para ela
+              não demorar quatro vezes mais.
+            </p>
+            <a
+              href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/GUIA.md"
+              class="install-link"
+              >Abrir o guia de build
+              <span class="material-symbols-outlined icon-inline">arrow_forward</span></a
+            >
+          </div>
+
+          <div class="install-card">
+            <div class="install-head">
+              <span class="material-symbols-outlined">schedule</span>
+              <h3>O que vem depois</h3>
+            </div>
+            <p>
+              A publicação na Google Play está planejada. Ela exige um pacote assinado com chave de
+              distribuição, política de privacidade e o formulário de segurança dos dados, nada
+              disso existe ainda.
+            </p>
+            <a
+              href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/ROADMAP.md"
+              class="install-link"
+              >Ver o roadmap
+              <span class="material-symbols-outlined icon-inline">arrow_forward</span></a
+            >
+          </div>
+        </div>
+
+        <p class="install-note">
+          <span class="material-symbols-outlined icon-inline">info</span>
+          O pacote gerado localmente tem cerca de 58 MB, roda em aparelhos arm64 e é assinado com a
+          chave de depuração. Serve para instalar e testar, não é um pacote de distribuição.
+        </p>
       </div>
     </section>
 
@@ -106,20 +185,30 @@
             <div class="icon"><span class="material-symbols-outlined">add_shopping_cart</span></div>
             <h3>Registrar compra</h3>
             <p>
-              Mês, supermercado e itens com quantidade, valor, subtotal e total calculados na hora.
+              Mês, supermercado, forma de pagamento e itens com quantidade, valor, subtotal e total
+              calculados na hora.
             </p>
           </div>
           <div class="feature">
-            <div class="icon"><span class="material-symbols-outlined">history</span></div>
-            <h3>Histórico completo</h3>
-            <p>Compras agrupadas por mês, com filtro por mercado, edição e exclusão.</p>
+            <div class="icon"><span class="material-symbols-outlined">qr_code_scanner</span></div>
+            <h3>Leitura do cupom fiscal</h3>
+            <p>
+              Aponte a câmera para o QR Code da nota e a compra se preenche sozinha. Funciona com a
+              SEFAZ de Minas Gerais, cada estado tem um portal próprio.
+            </p>
           </div>
           <div class="feature">
             <div class="icon"><span class="material-symbols-outlined">bar_chart</span></div>
             <h3>Comparação de mercados</h3>
             <p>
-              Gasto por mês e qual supermercado sai mais em conta, com selo de "mais econômico".
+              Gasto por mês, por forma de pagamento, e qual supermercado sai mais em conta, com selo
+              de "mais econômico".
             </p>
+          </div>
+          <div class="feature">
+            <div class="icon"><span class="material-symbols-outlined">history</span></div>
+            <h3>Histórico completo</h3>
+            <p>Compras agrupadas por mês, com busca por mercado ou produto, edição e exclusão.</p>
           </div>
           <div class="feature">
             <div class="icon"><span class="material-symbols-outlined">ios_share</span></div>
@@ -129,17 +218,9 @@
             </p>
           </div>
           <div class="feature">
-            <div class="icon"><span class="material-symbols-outlined">sync</span></div>
-            <h3>Offline e online</h3>
-            <p>
-              Funciona sem internet no celular e a versão que roda direto pela web já está a
-              caminho.
-            </p>
-          </div>
-          <div class="feature">
             <div class="icon"><span class="material-symbols-outlined">contrast</span></div>
             <h3>Tema claro e escuro</h3>
-            <p>Segue automaticamente a preferência do seu sistema.</p>
+            <p>Escolha o tema ou deixe acompanhar a preferência do sistema.</p>
           </div>
         </div>
       </div>
@@ -151,7 +232,7 @@
           <span class="material-symbols-outlined">grid_view</span> Telas do app
         </div>
         <h2>Capturas reais, não mockups</h2>
-        <p class="subtitle">O app rodando de verdade.</p>
+        <p class="subtitle">O app rodando de verdade, em um celular de verdade.</p>
         <div class="screens-grid">
           <div class="screen-card">
             <div class="frame">
@@ -175,22 +256,65 @@
       </div>
     </section>
 
+    <section id="plataforma">
+      <div class="wrap">
+        <div class="web-banner">
+          <div class="web-text">
+            <div class="badge"><span class="dot"></span> Em projeto</div>
+            <h2>Plataforma web e sincronização</h2>
+            <p>
+              A próxima etapa é tirar o Mercadin de um aparelho só: um backend para guardar as
+              compras, sincronização entre celular e computador, e uma aplicação web para analisar e
+              corrigir o histórico no teclado, com a tela inteira.
+            </p>
+            <p class="web-aviso">
+              Sincronizar vai ser <b>opcional</b>. Quem não ativar continua com tudo apenas no
+              aparelho, como é hoje.
+            </p>
+            <a
+              href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/PLATAFORMA.md"
+              class="install-link"
+              >Ler as decisões de arquitetura
+              <span class="material-symbols-outlined icon-inline">arrow_forward</span></a
+            >
+          </div>
+          <ul class="web-list">
+            <li>
+              <span class="material-symbols-outlined">key</span> Entrar com conta, sem senha própria
+            </li>
+            <li>
+              <span class="material-symbols-outlined">sync</span> Sincronização que sobrevive a dias
+              offline
+            </li>
+            <li>
+              <span class="material-symbols-outlined">edit</span> Leitura e edição completas no
+              navegador
+            </li>
+            <li>
+              <span class="material-symbols-outlined">monitoring</span> Gráficos anuais em tela
+              grande
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="quote-section">
       <div class="wrap">
         <div class="quote-card">
           <blockquote>"Controlar o mercado deveria ser simples."</blockquote>
           <p>
-            Um vórtice puxa três eixos: item, mercado, mês para um único resultado central:
-            <b>quanto você realmente gastou, e onde.</b>
+            Cada compra registrada cruza três eixos, item, mercado e mês, para chegar a um resultado
+            só: <b>quanto você realmente gastou, e onde.</b>
           </p>
         </div>
       </div>
     </section>
 
-    <section id="download">
+    <section id="origem">
       <div class="wrap">
         <div class="note-card">
-          <h3>Como o Vortex Cart surgiu</h3>
+          <h3>Como o Mercadin surgiu</h3>
           <p>
             Tudo começou com uma planilha de Excel usada pra acompanhar os gastos do mercado de
             casa, mês a mês, supermercado por supermercado. Quanto mais a planilha crescia, mais
@@ -198,15 +322,10 @@
             complexidade da interface do Excel.
           </p>
           <p>
-            Foi daí que nasceu o Vortex Cart: um app pra registrar o que você compra, em qual
-            mercado, e descobrir onde o seu dinheiro rende mais. Funciona direto no celular sem
-            precisar de internet, e uma versão para acessar pela web já está a caminho. Acompanhe a
-            evolução no
-            <a href="https://github.com/Emanuel-Mendonca/vortexcart/blob/main/docs/projeto/ROADMAP.md"
+            O nome vem de Minas Gerais, onde "mercadin" é como se chama, com carinho, o comércio
+            perto de casa. Acompanhe a evolução no
+            <a href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/ROADMAP.md"
               >roadmap do projeto</a
-            >
-            ou baixe a versão mais recente nas
-            <a href="https://github.com/Emanuel-Mendonca/vortexcart/releases">Releases do GitHub</a
             >.
           </p>
         </div>
@@ -215,12 +334,71 @@
 
     <footer>
       <div class="wrap">
-        <p>Vortex Cart é um projeto open source, licenciado sob MIT.</p>
-        <p>
-          <a href="https://github.com/Emanuel-Mendonca/vortexcart"
-            >github.com/Emanuel-Mendonca/vortexcart</a
-          >
-        </p>
+        <div class="footer-grid">
+          <div class="footer-col footer-brand">
+            <div class="brand">
+              <img src="screenshots/mercadin-icon.png" alt="Mercadin" />
+              <span>Mercadin</span>
+            </div>
+            <p>
+              Controle de compras de supermercado. Registro rápido no corredor, comparação entre
+              mercados e os dados guardados no próprio aparelho.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Projeto</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/ROADMAP.md"
+                  >Roadmap</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/ARCHITECTURE.md"
+                  >Arquitetura</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/PLATAFORMA.md"
+                  >Plataforma web</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/CHANGELOG.md"
+                  >Changelog</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Código</h4>
+            <ul>
+              <li><a href="https://github.com/Emanuel-Mendonca/mercadin">Repositório</a></li>
+              <li>
+                <a href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/LICENSE"
+                  >Licença MIT</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Emanuel-Mendonca/mercadin/blob/main/docs/projeto/BRANDING.md"
+                  >Identidade de marca</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-base">
+          <p>Mercadin, projeto pessoal de Emanuel Mendonça, licenciado sob MIT.</p>
+          <p>
+            <a href="https://github.com/Emanuel-Mendonca/mercadin"
+              >github.com/Emanuel-Mendonca/mercadin</a
+            >
+          </p>
+        </div>
       </div>
     </footer>
   </body>

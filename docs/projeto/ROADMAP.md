@@ -24,9 +24,11 @@ Alguém consegue registrar compras reais e ver onde está economizando.
 - [x] Build de teste configurado (`eas.json` com perfis dev/preview/production)
 - [x] Onboarding em 3 etapas na primeira abertura
 - [x] Tela de abertura animada com progresso real de carregamento
-- [ ] **Must**, Testes cobrindo os repositórios SQLite e a store. É a camada com maior
-      risco de regressão silenciosa: um erro em cálculo de total ou agregação passa
-      despercebido. Hoje a cobertura se concentra em `src/shared/`.
+- [x] **Must**, Testes cobrindo os repositórios SQLite. O SQL passou a rodar de verdade
+      nos testes, contra o SQLite embutido no Node. A primeira execução já encontrou um
+      `INSERT` quebrado que lint, typecheck e revisão não pegaram.
+- [ ] **Should**, Testes cobrindo a store. Os repositórios já estão cobertos; falta a
+      camada que os orquestra.
 - [ ] **Must**, Atualizar as capturas de tela. As atuais são anteriores ao redesign e não
       mostram a aba Cupom nem as formas de pagamento.
 - [ ] **Should**, Exercitar exportação e importação em aparelho real. Nunca foram testadas
@@ -59,23 +61,48 @@ Estes itens estavam planejados para marcos posteriores e foram antecipados:
 - [ ] **Could**, Múltiplas listas ou perfis (ex.: "casa" e "trabalho")
 - [ ] **Could**, Widget de tela inicial com o gasto do mês
 
-## V3, longo prazo
+## V3, plataforma web e sincronização
+
+Marco novo, decidido em outubro de 2026. As decisões de arquitetura, o protocolo de
+sincronização e o tratamento de conflito estão em [PLATAFORMA.md](./PLATAFORMA.md).
+
+- [x] **Must**, Identificadores UUID, `atualizado_em` e tombstones no SQLite, migrando os
+      dados existentes. Bloqueava todo o resto: com `AUTOINCREMENT`, dois aparelhos criam o
+      mesmo id para registros diferentes.
+- [ ] **Must**, API em ASP.NET Core com PostgreSQL, conta única e a rota `POST /api/sync`
+- [ ] **Must**, App sincronizando. Primeira entrega do marco com valor visível: backup
+      automático e troca de aparelho sem exportar JSON na mão.
+- [ ] **Must**, Política de privacidade publicada e exclusão de conta que apague os dados
+- [ ] **Should**, Aplicação web em React com leitura e edição completas
+- [ ] **Should**, SignalR avisando os outros aparelhos do mesmo usuário após um envio
+- [ ] **Could**, Modo compartilhado entre duas pessoas da mesma casa
+
+## V4, longo prazo
 
 - [ ] Leitura de cupom em outros estados. Cada UF tem portal e HTML próprios; hoje só MG.
-- [ ] Sincronização opcional via arquivo em nuvem do próprio usuário (Drive/iCloud),
-      mantendo o app sem backend próprio
+- [ ] Publicação na Google Play, com pacote AAB e chave de distribuição
 - [ ] Sugestão de qual mercado visitar, com base no histórico de preços por item
-- [ ] Modo compartilhado entre duas pessoas da mesma casa
 - [ ] Internacionalização de moeda e idioma
 
 ## Fora de escopo
 
 | Item                                               | Motivo                                                                                               |
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Autenticação e contas de usuário                   | Contraria a proposta local-first; adicionar contas mudaria o produto                                 |
-| Sincronização em nuvem com backend próprio         | Custo de servidor e manutenção incompatíveis com um projeto de portfólio                             |
 | Marketplace ou integração com apps de supermercado | Foge do propósito de controle pessoal de gastos                                                      |
 | Previsão de preços por IA                          | O app não tem dado nem infraestrutura para isso, e anunciar previsão sem cálculo real seria enganoso |
+
+### Decisões revertidas
+
+Dois itens saíram de "Fora de escopo" em outubro de 2026, e o registro fica aqui porque
+apagar a decisão anterior esconderia que ela existiu.
+
+| Item                                       | Motivo original                                         | Por que mudou                                                                                                         |
+| ------------------------------------------ | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Autenticação e contas de usuário           | contraria a proposta local-first                        | a conta passa a ser o que liga os aparelhos, e o modo offline continua existindo para quem não ativar a sincronização |
+| Sincronização em nuvem com backend próprio | custo de servidor incompatível com projeto de portfólio | o projeto deixou de ser só portfólio e virou ferramenta de uso diário, com aplicação web prevista                     |
+
+O custo de servidor continua sendo um risco real, não resolvido: ele apenas passou a ser
+aceito conscientemente.
 
 ## Como este documento é mantido
 
